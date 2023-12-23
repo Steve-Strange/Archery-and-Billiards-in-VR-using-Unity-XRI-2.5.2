@@ -5,7 +5,7 @@ using UnityEngine;
 public class BowController : MonoBehaviour
 {
     // Start is called before the first frame update
-    public float arrowSpeed = 500;
+    public float arrowSpeed = 300;
     public GameObject arrowTrigger;
     public GameObject arrowAttachedPoint;
     public GameObject arrowStartPoint;
@@ -36,12 +36,11 @@ public class BowController : MonoBehaviour
         if(arrowTrigger.GetComponent<ArrowTrigger>().arrowOnBow){
             GameObject arrowOnBow = arrowTrigger.GetComponent<ArrowTrigger>().arrowOnBow;
             arrowOnBow.transform.parent = null;
-            arrowOnBow.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+            arrowOnBow.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY;
             arrowOnBow.GetComponent<Rigidbody>().useGravity = true;
             arrowOnBow.GetComponent<ArrowController>().waitingToShoot = false;
-            arrowOnBow.GetComponent<Rigidbody>().AddForce(arrowOnBow.GetComponent<ArrowController>().arrowHeading * arrowSpeed);
-        } 
+            arrowOnBow.GetComponent<Rigidbody>().AddForce(arrowOnBow.GetComponent<ArrowController>().arrowHeading * arrowOnBow.GetComponent<ArrowController>().arrowHeading.magnitude * arrowSpeed);
+        }
     }
-
 
 }

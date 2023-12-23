@@ -4,11 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - RightHand
-  - LeftHand
-  - XRController
-  - Arrow
   - Target
+  - Arrow
+  - XRController
+  - ArrowTip
+  - ArrowOn
+  - Person
   layers:
   - Default
   - TransparentFX

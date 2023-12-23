@@ -39,14 +39,38 @@ public class ArrowController : MonoBehaviour
     }
 
     public void ReleaseArrow(){
-        gameObject.GetComponent<Rigidbody>().useGravity = false;
+        gameObject.GetComponent<Rigidbody>().useGravity = true;
         gameObject.GetComponent<Rigidbody>().isKinematic = false;
         gameObject.transform.parent = null;
         if(arrowTrigger.GetComponent<ArrowTrigger>().arrowOnBow == gameObject) {
+            gameObject.GetComponent<Rigidbody>().useGravity = false;
             gameObject.transform.parent = arrowTrigger.transform;
             waitingToShoot = true;
         }
 
         Debug.Log("ReleaseArrow:" + gameObject.transform.parent);
+    }
+
+        void OnTriggerEnter(Collider other){
+        if(other.tag == "Target"){
+            gameObject.transform.parent = other.transform;
+            gameObject.GetComponentInParent<Rigidbody>().velocity = new Vector3(0,0,0);
+            gameObject.GetComponentInParent<Rigidbody>().useGravity = false;
+            gameObject.GetComponentInParent<Rigidbody>().isKinematic = true;
+        
+        }
+        
+    }
+
+    
+    void OnTriggerExit(Collider other){
+        if(other.tag == "Target"){
+            gameObject.transform.parent = null;
+            gameObject.GetComponentInParent<Rigidbody>().useGravity = true;
+            gameObject.GetComponentInParent<Rigidbody>().constraints = RigidbodyConstraints.None;
+            gameObject.GetComponentInParent<Rigidbody>().isKinematic = false;
+        
+        }
+        
     }
 }
