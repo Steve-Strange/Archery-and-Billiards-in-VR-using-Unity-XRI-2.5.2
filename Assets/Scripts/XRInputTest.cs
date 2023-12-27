@@ -39,14 +39,14 @@ public class XRInputTest : MonoBehaviour
     {
         Vector3 leftHandPosition = LeftHandAction.action.ReadValue<Vector3>();
         Vector3 rightHandPosition = RightHandAction.action.ReadValue<Vector3>();
-        grabPosition = cue.GetComponent<GrabbedObjectName>().grabPosition;
+        grabPosition = cue.GetComponent<GrabCue>().grabPosition;
 
         float XButtonStatus = LeftXButtonActionReference.action.ReadValue<float>();
         float RightGripButtonStatus = RightGripActionReference.action.ReadValue<float>();
         float RightTriggerButtonStatus = RightTriggerActionReference.action.ReadValue<float>(); 
 
         
-        if(RightGripButtonStatus > 0.9f && cue.GetComponent<GrabbedObjectName>().cueGrabbed){
+        if(RightGripButtonStatus > 0.9f && cue.GetComponent<GrabCue>().cueGrabbed){
             startHolding = true;
         }
 
@@ -68,7 +68,7 @@ public class XRInputTest : MonoBehaviour
     private void AttachCueToHand(Vector3 leftHandPosition, Vector3 rightHandPosition)
     {
         
-        grabPositionLength = cue.GetComponent<GrabbedObjectName>().grabPositionLength;
+        grabPositionLength = cue.GetComponent<GrabCue>().grabPositionLength;
 
         // 计算右手到左手的向量
         Vector3 cueDirection = leftHandPosition - rightHandPosition;

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public class GrabbedObjectName : MonoBehaviour
+public class GrabCue : MonoBehaviour
 {
     private XRGrabInteractable interactable;
     private GameObject cue;

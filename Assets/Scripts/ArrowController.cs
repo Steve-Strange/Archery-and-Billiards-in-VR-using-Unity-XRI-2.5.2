@@ -62,7 +62,6 @@ public class ArrowController : MonoBehaviour
         
     }
 
-    
     void OnTriggerExit(Collider other){
         if(other.tag == "Target"){
             gameObject.transform.parent = null;

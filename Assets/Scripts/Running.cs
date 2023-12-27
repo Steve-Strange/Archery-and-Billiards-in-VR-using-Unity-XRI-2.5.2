@@ -36,7 +36,8 @@ public class Running : MonoBehaviour
         float LeftGrabButtonStatus = LeftGrabActionReference.action.ReadValue<float>();
         float LeftTriggerButtonStatus = LeftTriggerActionReference.action.ReadValue<float>();
         if(RightGripButtonStatus > 0.9f && RightTriggerButtonStatus > 0.9f && LeftGrabButtonStatus > 0.9f && LeftTriggerButtonStatus > 0.9f){
-            Person.GetComponent<Rigidbody>().AddForce(speed * ((rightHand.GetComponent<VelocityCalculator>().speed.magnitude + leftHand.GetComponent<VelocityCalculator>().speed.magnitude)/1.8f) * new Vector3(Head.transform.forward.x, 0, Head.transform.forward.z));
+            Person.GetComponent<Rigidbody>().AddForce(speed * ((rightHand.GetComponent<VelocityCalculator>().speed.magnitude + leftHand.GetComponent<VelocityCalculator>().speed.magnitude)/1.8f) 
+            * new Vector3(Head.transform.forward.x, 0, Head.transform.forward.z));
         }
         else if(RightGripButtonStatus > 0.9f && RightTriggerButtonStatus > 0.9f){
             Person.GetComponent<Rigidbody>().AddForce(speed * rightHand.GetComponent<VelocityCalculator>().speed.magnitude * new Vector3(Head.transform.forward.x, 0, Head.transform.forward.z));

@@ -20,7 +20,8 @@ public class ArrowScore : MonoBehaviour
 
     void OnTriggerEnter(Collider collider){
         if(collider.tag == "Arrow"){
-            float distance = 10 - (new Vector3(0, collider.transform.position.y, collider.transform.position.z) - new Vector3(0, targetCenter.transform.position.y, targetCenter.transform.position.z)).magnitude * 10;
+            float distance = 10 - (new Vector3(0, collider.transform.position.y, collider.transform.position.z) - 
+            new Vector3(0, targetCenter.transform.position.y, targetCenter.transform.position.z)).magnitude * 10;
             
             if(distance < 0){
                 gameObject.GetComponentInChildren<Text>().text = "Miss";
